@@ -2,6 +2,14 @@
 
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
+	PRINT'==========================';
+	PRINT 'Loading Bronze Layer';
+	PRINT'==========================';
+
+	PRINT'--------------------------';
+	PRINT 'Loading CRM Tables'
+	PRINT'--------------------------';
+
 	--Before loading the table we should remove all information that was loding before
 	TRUNCATE TABLE bronze.crm_cust_info
 	--Loading massive amount of data very quickly directly into database (BULK INSERT)
@@ -33,6 +41,9 @@ BEGIN
 		TABLOCK -- Optional to improve the performance
 	);
 
+	PRINT'--------------------------';
+	PRINT 'Loading ERP Tables'
+	PRINT'--------------------------';
 	TRUNCATE TABLE bronze.erp_cust_az12
 	--Loading massive amount of data very quickly directly into database (BULK INSERT)
 	BULK INSERT bronze.erp_cust_az12
