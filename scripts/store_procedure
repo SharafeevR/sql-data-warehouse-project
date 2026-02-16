@@ -1,0 +1,65 @@
+--Creating the store procedure, after creating you can find it in DataWarehouse - Programmability - bronze.load_bronze
+
+CREATE OR ALTER PROCEDURE bronze.load_bronze AS
+BEGIN
+	--Before loading the table we should remove all information that was loding before
+	TRUNCATE TABLE bronze.crm_cust_info
+	--Loading massive amount of data very quickly directly into database (BULK INSERT)
+	BULK INSERT bronze.crm_cust_info
+	FROM 'C:\Users\Rafael.Sharafeev\Desktop\Power BI\SQL\Baara\sql-data-warehouse-project\datasets\source_crm\cust_info.csv'
+	WITH (
+		FIRSTROW = 2, -- We start from second row, becouse firs row is header in the table
+		FIELDTERMINATOR = ',', --How the data splited (it could be , or / or # or other different)
+		TABLOCK -- Optional to improve the performance
+	);
+
+	TRUNCATE TABLE bronze.crm_prd_info
+	--Loading massive amount of data very quickly directly into database (BULK INSERT)
+	BULK INSERT bronze.crm_prd_info
+	FROM 'C:\Users\Rafael.Sharafeev\Desktop\Power BI\SQL\Baara\sql-data-warehouse-project\datasets\source_crm\prd_info.csv'
+	WITH (
+		FIRSTROW = 2, -- We start from second row, becouse firs row is header in the table
+		FIELDTERMINATOR = ',', --How the data splited (it could be , or / or # or other different)
+		TABLOCK -- Optional to improve the performance
+	);
+
+	TRUNCATE TABLE bronze.crm_sales_detailes
+	--Loading massive amount of data very quickly directly into database (BULK INSERT)
+	BULK INSERT bronze.crm_sales_detailes
+	FROM 'C:\Users\Rafael.Sharafeev\Desktop\Power BI\SQL\Baara\sql-data-warehouse-project\datasets\source_crm\sales_details.csv'
+	WITH (
+		FIRSTROW = 2, -- We start from second row, becouse firs row is header in the table
+		FIELDTERMINATOR = ',', --How the data splited (it could be , or / or # or other different)
+		TABLOCK -- Optional to improve the performance
+	);
+
+	TRUNCATE TABLE bronze.erp_cust_az12
+	--Loading massive amount of data very quickly directly into database (BULK INSERT)
+	BULK INSERT bronze.erp_cust_az12
+	FROM 'C:\Users\Rafael.Sharafeev\Desktop\Power BI\SQL\Baara\sql-data-warehouse-project\datasets\source_erp\CUST_AZ12.csv'
+	WITH (
+		FIRSTROW = 2, -- We start from second row, becouse firs row is header in the table
+		FIELDTERMINATOR = ',', --How the data splited (it could be , or / or # or other different)
+		TABLOCK -- Optional to improve the performance
+	);
+
+	TRUNCATE TABLE bronze.erp_loc_a101
+	--Loading massive amount of data very quickly directly into database (BULK INSERT)
+	BULK INSERT bronze.erp_loc_a101
+	FROM 'C:\Users\Rafael.Sharafeev\Desktop\Power BI\SQL\Baara\sql-data-warehouse-project\datasets\source_erp\LOC_A101.csv'
+	WITH (
+		FIRSTROW = 2, -- We start from second row, becouse firs row is header in the table
+		FIELDTERMINATOR = ',', --How the data splited (it could be , or / or # or other different)
+		TABLOCK -- Optional to improve the performance
+	);
+
+	TRUNCATE TABLE bronze.erp_px_cat_g1v2
+	--Loading massive amount of data very quickly directly into database (BULK INSERT)
+	BULK INSERT bronze.erp_px_cat_g1v2
+	FROM 'C:\Users\Rafael.Sharafeev\Desktop\Power BI\SQL\Baara\sql-data-warehouse-project\datasets\source_erp\PX_CAT_G1V2.csv'
+	WITH (
+		FIRSTROW = 2, -- We start from second row, becouse firs row is header in the table
+		FIELDTERMINATOR = ',', --How the data splited (it could be , or / or # or other different)
+		TABLOCK -- Optional to improve the performance
+	);
+END
