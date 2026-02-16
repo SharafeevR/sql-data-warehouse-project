@@ -1,0 +1,2 @@
+-- This script allow loading all data from csv. using earlier created Procedure (bronze.load_bronze)
+EXEC bronze.load_bronze
