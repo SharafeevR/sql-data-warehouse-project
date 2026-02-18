@@ -1,1 +1,4 @@
+--Below is two ETL scripts. Now everything is simple what we need to to it first run bronze layer one ists done the next step is silver procedure and all data from the bronze layer transforming cleaning and put it in silver layer.
 
+EXEC bronze.load_bronze
+EXEC silver.load_silver
